@@ -4,6 +4,28 @@
 MetalGo is a fork of AvalancheGo and aims to maintain upstream changes. This page documents the major releases and their key changes.
 :::
 
+## v1.13.x (Fortuna)
+
+### v1.13.5 (Fortuna) - May 2026
+
+This mandatory Mainnet upgrade activated Fortuna support. Validators were required to upgrade before May 25, 2026.
+
+**Major change:**
+- **ACP-176**: Dynamic EVM gas limits and price discovery updates
+
+**APIs and operations:**
+- Added ProposerVM block timestamp and Snowman block-build time-skew metrics
+- Added a network health check for primary-network validators with no ingress connections
+- Removed `avm.getAddressTxs`
+- Added initial HTTP/2 support for VM connections
+- Removed native gzip compression support for HTTP requests
+
+**Plugin Version:** 43
+
+Ubuntu 20.04 (Focal) binaries are not supported. Use Ubuntu 22.04 or later. See the [v1.13.5 release](https://github.com/MetalBlockchain/metalgo/releases/tag/v1.13.5) for the complete notes.
+
+---
+
 ## v1.12.x (Etna) - Reinventing Subnets
 
 The Etna upgrade represents a major evolution in subnet architecture, implementing several Avalanche Community Proposals (ACPs).

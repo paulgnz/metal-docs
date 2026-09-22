@@ -20,7 +20,7 @@ Prerequisites:
 - Shell access to the machine running the node
 - Administrator privileges on the machine
 
-This tutorial assumes you have Ubuntu 18.04 or 20.04 running on your node. Other Linux flavors that use `systemd` for running services and `apt-get` for package management might work but have not been tested. Community member has reported it works on Debian 10, might work on other Debian releases as well.
+This tutorial assumes you have Ubuntu 22.04 or later running on your node. Other Linux distributions that use `systemd` for services and `apt-get` for package management may work, but have not been tested.
 
 ### Caveat: Security
 
@@ -115,7 +115,7 @@ Nov 12 11:38:33 ip-172-31-36-200 prometheus[548]: ts=2021-11-12T11:38:33.773Z ca
 Note the `active (running)` status (press `q` to exit). You can also check Prometheus web interface, available on `http://your-node-host-ip:9090/`
 
 :::warning
-You may need to do `sudo ufw allow 9090/tcp` if the firewall is on, and/or adjust the security settings to allow connections to port 9090 if the node is running on a cloud instance. If on public internet, make sure to only allow your IP to connect!
+Do not open port 9090 to the public internet. Prefer a VPN or SSH tunnel. If direct remote access is required, replace `YOUR_TRUSTED_IP` and allow only that address: `sudo ufw allow from YOUR_TRUSTED_IP to any port 9090 proto tcp`.
 :::
 
 If everything is ok, let's move on.
@@ -155,7 +155,7 @@ sudo systemctl status grafana-server
 which should again show grafana as `active`. Grafana should now be available at `http://your-node-host-ip:3000/` from your browser. Log in with username: admin, password: admin, and you will be prompted to set up a new, secure password. Do that.
 
 :::warning
-You may need to do `sudo ufw allow 3000/tcp` if the firewall is on, and/or adjust the cloud instance settings to allow connections to port 3000. If on public internet, make sure to only allow your IP to connect!
+Do not open port 3000 to the public internet. Prefer a VPN or SSH tunnel. If direct remote access is required, replace `YOUR_TRUSTED_IP` and allow only that address: `sudo ufw allow from YOUR_TRUSTED_IP to any port 3000 proto tcp`.
 :::
 
 Prometheus and Grafana are now installed, we're ready for the next step.

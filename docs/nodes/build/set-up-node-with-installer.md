@@ -50,7 +50,7 @@ Look for line that doesn't have `grep` on it. In this example, that is the secon
 
 #### Node Working Files
 
-If you previously ran a MetalGo node on this computer, you will have local node files stored in `$HOME/.metalgo` directory. Those files will not be disturbed, and node set up by the script will continue operation with the same identity and state it had before. That being said, for your node's security, back up `staker.crt` and `staker.key` files, found in `$HOME/.metalgo/staking` and store them somewhere secure. You can use those files to recreate your node on a different computer if you ever need to. Check out this [tutorial](../maintain/node-backup-and-restore.md) for backup and restore procedure.
+If you previously ran a MetalGo node on this computer, you will have local node files stored in `$HOME/.metalgo` directory. Those files will not be disturbed, and node set up by the script will continue operation with the same identity and state it had before. That being said, for your node's security, back up `staker.crt`, `staker.key`, and `signer.key`, found in `$HOME/.metalgo/staking`, and store them somewhere secure. You can use those files to recreate your node on a different computer if you ever need to. Check out this [tutorial](../maintain/node-backup-and-restore.md) for backup and restore procedure.
 
 ### Networking Considerations
 
@@ -82,7 +82,7 @@ chmod 755 metalgo-installer.sh;\
 ./metalgo-installer.sh
 ```
 
-And we're off! The output should look something like this:
+And we're off! The installer fetches the latest stable MetalGo release from GitHub, so the version in your output will vary:
 
 ```text
 MetalGo installer
@@ -91,12 +91,12 @@ Preparing environment...
 Found arm64 architecture...
 Looking for the latest arm64 build...
 Will attempt to download:
- https://github.com/MetalBlockchain/metalgo/releases/download/v1.12.2/metalgo-linux-arm64-v1.12.2.tar.gz
-metalgo-linux-arm64-v1.12.2.tar.gz 100%[=========================================================================>]  35.5M  80.2MB/s    in 0.4s
+ https://github.com/MetalBlockchain/metalgo/releases/download/<VERSION>/metalgo-linux-arm64-<VERSION>.tar.gz
+metalgo-linux-arm64-<VERSION>.tar.gz 100%[=========================================================================>]  35.5M  80.2MB/s    in 0.4s
 Unpacking node files...
-metalgo-v1.12.2/plugins/
-metalgo-v1.12.2/plugins/evm
-metalgo-v1.12.2/metalgo
+metalgo-<VERSION>/plugins/
+metalgo-<VERSION>/plugins/evm
+metalgo-<VERSION>/metalgo
 Node files unpacked into /home/ubuntu/metal-node
 ```
 
@@ -219,7 +219,7 @@ sudo systemctl start metalgo
 MetalGo is an ongoing project and there are regular version upgrades. Most upgrades are recommended but not required. Advance notice will be given for upgrades that are not backwards compatible. When a new version of the node is released, you will notice log lines like:
 
 ```text
-Jan 08 10:26:45 ip-172-31-16-229 metalgo[6335]: INFO [01-08|10:26:45] metalgo/network/peer.go#526: beacon 9CkG9MBNavnw7EVSRsuFr7ws9gascDQy3 attempting to connect with newer version metalgo/1.12.2. You may want to update your client
+Jan 08 10:26:45 ip-172-31-16-229 metalgo[6335]: INFO [01-08|10:26:45] metalgo/network/peer.go#526: beacon 9CkG9MBNavnw7EVSRsuFr7ws9gascDQy3 attempting to connect with newer version metalgo/<VERSION>. You may want to update your client
 ```
 
 It is recommended to always upgrade to the latest version, because new versions bring bug fixes, new features and upgrades.
@@ -246,7 +246,7 @@ It will then upgrade your node to the latest version, and after it's done, start
 ```text
 Node upgraded, starting service...
 New node version:
-metalgo/1.12.2 [network=mainnet, database=v1.4.5, commit=abc123...]
+metalgo/<VERSION> [network=mainnet, database=<DATABASE_VERSION>, commit=<COMMIT>]
 Done!
 ```
 
@@ -330,22 +330,15 @@ It will print out a list, something like:
 MetalGo installer
 ---------------------
 Available versions:
-v1.12.2
-v1.12.0
-v1.11.13
-v1.11.12
-v1.11.9
-v1.11.3
-v1.11.2
-v1.11.1
-v1.10.17
+<LATEST_VERSION>
+<PREVIOUS_VERSION>
 ...
 ```
 
 To install a specific version, run the script with `--version` followed by the tag of the version. For example:
 
 ```bash
-./metalgo-installer.sh --version v1.12.0
+./metalgo-installer.sh --version <VERSION>
 ```
 
 :::danger

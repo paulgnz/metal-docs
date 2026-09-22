@@ -12,9 +12,10 @@ Before upgrading your node, it is recommended you backup your staker files which
 cd
 cp ~/.metalgo/staking/staker.crt .
 cp ~/.metalgo/staking/staker.key .
+cp ~/.metalgo/staking/signer.key .
 ```
 
-Then download `staker.crt` and `staker.key` files and keep them somewhere safe and private. If anything happens to your node or the machine node runs on, these files can be used to fully recreate your node.
+Then download `staker.crt`, `staker.key`, and `signer.key` and keep them somewhere safe and private. If anything happens to your node or the machine node runs on, these files can be used to fully recreate your node.
 
 If you use your node for development purposes and have keystore users on your node, you should back up those too.
 
@@ -42,7 +43,7 @@ It will then upgrade your node to the latest version, and after it's done, start
 ```text
 Node upgraded, starting service...
 New node version:
-metal/1.1.1 [network=mainnet, database=v1.0.0, commit=f76f1fd5f99736cf468413bbac158d6626f712d2]
+metalgo/<VERSION> [network=mainnet, database=<DATABASE_VERSION>, commit=<COMMIT>]
 Done!
 ```
 

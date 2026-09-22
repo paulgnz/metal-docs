@@ -27,7 +27,7 @@ Metal is an incredibly lightweight protocol, so nodes can run on commodity hardw
 - CPU: Equivalent of 8 AWS vCPU
 - RAM: 16 GiB
 - Storage: 250 GiB
-- OS: Ubuntu 18.04/20.04 or MacOS &gt;= Catalina
+- OS: Ubuntu 22.04+ or macOS 12+
 
 ### Networking
 
